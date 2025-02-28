@@ -23,7 +23,9 @@ jobs:
 
       - name: Get latest Release tags
         run: |
-          curl -s https://api.github.com/repos/simulot/immich-go/releases | jq -r '.[0].tag_name' > .release
+          curl -s https://api.github.com/repos/simulot/immich-go/releases | jq -r '.[0].tag_name' > tag
+          echo "::set-output name=tag::$(cat tag)"
+        id: get_latest_release
 
       - name: Build and push
         uses: docker/build-push-action@v6.6.1
