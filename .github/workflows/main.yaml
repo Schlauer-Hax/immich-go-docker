@@ -33,6 +33,6 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ghcr.io/simulot/immich-go:latest,ghcr.io/simulot/immich-go:${{ steps.get_latest_release.outputs.tag }}
+          tags: ghcr.io/schlauer-hax/immich-go-docker:latest,ghcr.io/schlauer-hax/immich-go-docker:${{ steps.get_latest_release.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
