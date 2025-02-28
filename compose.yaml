@@ -1,0 +1,15 @@
+services:
+  immich-go-upload:
+    image: ghcr.io/schlauer-hax/immich-go-docker
+    volumes:
+      - /iCloud:/iCloud
+    environment:
+      IMMICH_SERVER: "http://localhost:1234"   # Replace with your Immich server address and port
+      API_KEY: "SUPER_SECRET_API_KEY"          # Replace with your actual API key
+    entrypoint: >
+      sh -c "while true; do
+              echo 'Starting immich-go upload...';
+              immich-go upload from-folder --server=$${IMMICH_SERVER} --api-key=$${API_KEY} /iCloud;
+              echo 'Upload completed. Sleeping for 24 hours...';
+              sleep 86400;
+            done"
